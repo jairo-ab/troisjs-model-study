@@ -49,3 +49,7 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 3. Open `src/main.ts` in VSCode
 4. Open the VSCode command palette
 5. Search and run "Select TypeScript version" -> "Use workspace version"
+
+## Screenshot
+
+<img src="public/screenshot.png">
