@@ -1,10 +1,10 @@
 
 <script lang="ts"> 
 import { defineComponent, ref, onMounted } from "vue";
-import { Renderer, Scene, Camera, PointLight, AmbientLight, GltfModel, Texture } from 'troisjs'
+import { Renderer, Scene, Camera, PointLight, AmbientLight, GltfModel, Texture, FbxModel, HemisphereLight } from 'troisjs'
 export default defineComponent({
     components: {
-        Renderer, Scene, Camera, PointLight, AmbientLight, GltfModel, Texture
+        Renderer, Scene, Camera, PointLight, AmbientLight, GltfModel, Texture, FbxModel, HemisphereLight
     },
     setup() {
         const renderer = ref(null);
@@ -43,20 +43,22 @@ export default defineComponent({
 
 <template>
     <div class="container">
-        <Renderer ref="renderer" antialias :orbit-ctrl="{ enableDamping: true, dampingFactor: 0.05, autoRotate: true }" shadow resize="window">
+        <Renderer ref="renderer" antialias :orbit-ctrl="{ enableDamping: true, dampingFactor: 0.05, autoRotate: false }" shadow resize="window">
             <Camera :position="{x: 0, y: 5, z: 250}" />
             <Scene background="#a0a0a0">
                 <AmbientLight />
+                <HemisphereLight />
                 <PointLight
                 color="white"
                 :position="{ x: 50, y: -20, z: 40 }"
                 :intensity="2"
                 />
-                <GltfModel
+                <!--<GltfModel
                     ref="model"
                     src="/models/robo_caixa/scene.gltf"
                     @load="onReady"
-                />
+                />-->
+                <FbxModel ref="model" src="/models/robot/SambaDancing.fbx" @load="onReady" />
             </Scene>
         </Renderer>
     </div>
