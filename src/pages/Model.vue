@@ -69,7 +69,7 @@ export default {
 </script>
 
 <template>
-  <Renderer ref="renderer" antialias  resize shadow>
+  <Renderer ref="renderer" :orbit-ctrl="{ enableDamping: true, target }" antialias  resize shadow>
     <Camera :position="{ x: 0, y: 150, z: 500 }" />
     <Scene ref="scene" background="#757575">
       <HemisphereLight />
@@ -83,7 +83,7 @@ export default {
         <PhongMaterial color="#999999" :props="{ depthWrite: false }" />
       </Plane>
 
-      <FbxModel src="/models/mech-drone/source/Drone.zip/Drone.fbx" @load="onLoad" />
+      <FbxModel src="/models/Samba.fbx" @load="onLoad" />
     </Scene>
   </Renderer>
 </template>
